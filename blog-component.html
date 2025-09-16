@@ -1,0 +1,32 @@
+<ul>
+    @for (prova of provas; track $index) {
+      <li (click)="selecionada = prova">
+        {{ prova.titulo }} - {{ prova.autor }} ({{ prova.dataPublicacao }})
+      </li>
+    }
+  </ul>
+  
+  <hr>
+  
+  @if (selecionada) {
+    <h2>{{ selecionada.titulo }}</h2>
+    <p><strong>Autor:</strong> {{ selecionada.autor }}</p>
+    <p><strong>Data de Publicação:</strong> {{ selecionada.dataPublicacao }}</p>
+    <p><strong>Conteúdo:</strong></p>
+    <p>{{ selecionada.conteudo }}</p>
+
+    <button (click)="incrementar()">Likes: {{contador}}</button>
+    <br><br>
+    
+    <input (keyup.enter)="adicionarItem($event)"
+        placeholder="Comente e pressione Enter">
+    <ul>    
+        @for (item of lista; track $index)
+        {
+        <li>{{ item }}</li>
+        }
+    </ul>
+}
+
+
+
